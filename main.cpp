@@ -36,6 +36,29 @@ int main_menu() {
 int main() {
     srand(time(0));
     bool again;
+    int choice;
+    bool run = true;
+    while (run) {
+        choice = main_menu();
+    }
+
+    switch (choice)
+    {
+        case 1:
+            cout << "Adding goat......." << endl ;
+            break;
+        case 2:
+            cout << "deleting goat......." << endl ;
+            break;
+        case 3:
+            cout << "listing goat......." << endl ;
+            break;
+        case 4:
+            cout << "bye bye......." << endl ;
+            run = false;
+            break;
+    } 
+
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
