@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <ctime>
 #include "Goat.h"
 using namespace std;
 
@@ -9,7 +10,7 @@ const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
-void add_goat(list<Goat> &trip, string [], string []);
+void add_goat(list<Goat> &trip, string names[], string colors[]);
 void display_trip(list<Goat> trip);
 
 int main_menu() {
@@ -25,13 +26,14 @@ int main_menu() {
         cout << "Choice --> " << endl ;
         cin >> choice;
 
-        if (choice! || choice < 1 || choice > 4 ) {
+        if (!choice || choice < 1 || choice > 4 ) {
             cout << "Invalid choice. Enter number 1-4" << endl ;
         }
         else {
             break;
         }
     }
+    return choice;
 }
 
 int main() {
@@ -90,3 +92,15 @@ int main() {
     return 0;
 }
 
+void delete_goat(list<Goat> &trip);
+void add_goat(list<Goat> &trip, string names[], string colors[]) {
+    string name = names[ rand() % SZ_NAMES ];
+    string color = colors[ rand() % SZ_COLORS ];
+    int age = rand() % (MAX_AGE+1);
+
+    Goat newGoat (name, age, color);
+    trip.push_back(newGoat);
+    cout << "goat:" << name << " " << age << " " << color << " successfully added" << endl;
+}
+
+void display_trip(list<Goat> trip);
