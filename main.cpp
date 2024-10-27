@@ -11,6 +11,7 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+
 int main_menu() {
     int choice;
 
@@ -38,27 +39,7 @@ int main() {
     bool again;
     int choice;
     bool run = true;
-    while (run) {
-        choice = main_menu();
-    }
-
-    switch (choice)
-    {
-        case 1:
-            cout << "Adding goat......." << endl ;
-            break;
-        case 2:
-            cout << "deleting goat......." << endl ;
-            break;
-        case 3:
-            cout << "listing goat......." << endl ;
-            break;
-        case 4:
-            cout << "bye bye......." << endl ;
-            run = false;
-            break;
-    } 
-
+    list<Goat> trip;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -72,6 +53,37 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
+    
+
+
+
+
+    while (run) {
+        choice = main_menu();
+    }
+
+    switch (choice)
+    {
+        case 1:
+            cout << "Adding goat......." << endl ;
+            add_goat(trip, names, colors);
+            break;
+        case 2:
+            cout << "deleting goat......." << endl ;
+            delete_goat(trip);
+            break;
+        case 3:
+            cout << "listing goat......." << endl ;
+            display_trip(trip);
+            break;
+        case 4:
+            cout << "bye bye......." << endl ;
+            run = false;
+            break;
+    } 
+
+
+    
 
 
 
