@@ -120,7 +120,14 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
 }
 
 void display_trip(list<Goat> trip) {
-    
+    if (trip.empty()) {
+        cout << "no goat to display" << endl ;
+        return;
+    }
+    int i;
+    for (const auto& goat : trip) {
+        cout << "[" << i++ << "]" << goat.get_name() << "(" << goat.get_age() << "," << goat.get_color() << ")" << endl ;
+    }
 }
 
 int select_goat(list<Goat> trip) {
