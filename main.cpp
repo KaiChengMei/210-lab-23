@@ -22,7 +22,7 @@ int main_menu() {
         cout << "[1] Add a goat" << endl ;
         cout << "[2] Delete a goat" << endl ;
         cout << "[3] List goats" << endl ;
-        cout << "4] Quit" << endl ;
+        cout << "[4] Quit" << endl ;
         cout << "Choice --> " << endl ;
         cin >> choice;
 
@@ -38,7 +38,7 @@ int main_menu() {
 
 int main() {
     srand(time(0));
-    bool again;
+
     int choice;
     bool run = true;
     list<Goat> trip;
@@ -54,7 +54,6 @@ int main() {
     i = 0;
     while (fin1 >> colors[i++]);
     fin1.close();
-
     
 
 
@@ -62,30 +61,30 @@ int main() {
 
     while (run) {
         choice = main_menu();
+
+
+        switch (choice)
+        {
+            case 1:
+                cout << "Adding goat......." << endl ;
+                add_goat(trip, names, colors);
+                break;
+            case 2:
+                cout << "deleting goat......." << endl ;
+                delete_goat(trip);
+                break;
+            case 3:
+                cout << "listing goat......." << endl ;
+                display_trip(trip);
+                break;
+            case 4:
+                cout << "bye bye......." << endl ;
+                run = false;
+                break;
+        } 
+
+
     }
-
-    switch (choice)
-    {
-        case 1:
-            cout << "Adding goat......." << endl ;
-            add_goat(trip, names, colors);
-            break;
-        case 2:
-            cout << "deleting goat......." << endl ;
-            delete_goat(trip);
-            break;
-        case 3:
-            cout << "listing goat......." << endl ;
-            display_trip(trip);
-            break;
-        case 4:
-            cout << "bye bye......." << endl ;
-            run = false;
-            break;
-    } 
-
-
-    
 
 
 
@@ -100,7 +99,7 @@ void delete_goat(list<Goat> &trip) {
 
     int n = select_goat(trip);
     auto a = trip.begin();
-    for (int i = 0; i++ ; i < n - 1) {
+    for (int i = 0; i < (n - 1); i++) {
         ++a;
     }
     trip.erase(a);
@@ -116,7 +115,7 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
 
     Goat newGoat (name, age, color);
     trip.push_back(newGoat);
-    cout << "goat:" << name << " " << age << " " << color << " successfully added" << endl;
+    cout << "goat:" << name << "(" << age << "," << color << ")" << " successfully added" << endl;
 }
 
 void display_trip(list<Goat> trip) {
@@ -124,7 +123,7 @@ void display_trip(list<Goat> trip) {
         cout << "no goat to display" << endl ;
         return;
     }
-    int i;
+    int i=1;
     for (const auto& goat : trip) {
         cout << "[" << i++ << "]" << goat.get_name() << "(" << goat.get_age() << "," << goat.get_color() << ")" << endl ;
     }
