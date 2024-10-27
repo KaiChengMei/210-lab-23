@@ -12,7 +12,11 @@ private:
     string color;
 public: 
     Goat()                          { name = ""; age = 0; color = ""; }
-    // write three more constructors
+    // write three more constructors task 1
+
+    Goat(string n) { name = n; age = 0; color = ""; }
+    Goat(string n, int a) { name = n; age = a; color = ""; }
+    Goat(string n, int a, strng c) { name = n; age = a; color = c; }
 
     // setters and getters
     void set_name(string n)         { name = n; };
